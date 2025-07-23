@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'essentiel du Dimanche - Temple la Grâce</title>
+    <title>L'essentiel du Dimanche - ADBiétry Temple la Grâce</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Polices combinées des deux pages -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600&family=Montserrat:wght@400;600;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* ===== STYLES DU HEADER/FOOTER (Première page) ===== */
         :root {
             --primary-blue: #0056b3;
             --secondary-blue: #1a365d;
@@ -28,6 +23,8 @@
             --floral-green: #4a8f5e;
             --floral-pink: #e8a2c4;
             --floral-yellow: #f7d560;
+            --deep-blue: #1a4bbb;
+            --holy-gold: #f4c430;
         }
 
         * {
@@ -97,19 +94,12 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-15px) rotate(5deg);
-            }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
             position: relative;
@@ -134,9 +124,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background:
-                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+            background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
             opacity: 0.3;
         }
 
@@ -167,6 +156,191 @@
             font-size: 1.4rem;
             opacity: 0.9;
             margin-top: 0.5rem;
+        }
+
+        /* Page Content */
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--deep-blue);
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .page-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(to right, var(--gold), var(--primary-blue));
+            border-radius: 2px;
+        }
+
+        .sermons-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+        }
+
+        /* Sermons Gallery */
+        .sermons-gallery {
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .gallery-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--deep-blue);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .gallery-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--gold), var(--primary-blue));
+            border-radius: 2px;
+        }
+
+        .sermons-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px 10px;
+            gap: 30px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) var(--light-gold);
+            scroll-behavior: smooth;
+        }
+
+        .sermons-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .sermons-container::-webkit-scrollbar-track {
+            background: var(--light-gold);
+            border-radius: 10px;
+        }
+
+        .sermons-container::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 10px;
+        }
+
+        .sermon-card {
+            flex: 0 0 350px;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .sermon-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .sermon-card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .sermon-card-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sermon-card-theme {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--deep-blue);
+            line-height: 1.3;
+        }
+
+        .sermon-card-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sermon-card-date::before {
+            content: "📅";
+            opacity: 0.7;
+        }
+
+        .sermon-card-thematic {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        /* Navigation Controls */
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .control-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .control-btn:hover {
+            background: var(--gold);
+            transform: scale(1.1);
         }
 
         /* Footer Styles */
@@ -220,383 +394,15 @@
             margin-top: 1.5rem;
         }
 
-        /* ===== STYLES DU CONTENU PRINCIPAL (Deuxième page) ===== */
-        /* Variables supplémentaires de la deuxième page */
-        :root {
-            --deep-blue: #1a4bbb;
-            --holy-gold: #f4c430;
-            --fire-orange: #ff8c00;
-            --spirit-purple: #9b59b6;
-            --holy-red: #e74c3c;
-            --life-green: #2ecc71;
-            --heavenly-teal: #1abc9c;
-            --light-cyan: #e0f7fa;
-            --pure-white: #ffffff;
-            --light-pearl: #f8f9fa;
-        }
-
-        /* Article Styles - Inspiration Divine */
-        .article-container {
-            background-color: var(--pure-white);
-            margin: -2rem auto 3rem;
-            padding: 3rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-            z-index: 2;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .article-container::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 8px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--holy-red), var(--spirit-purple), var(--primary-blue));
-        }
-
-        .sermon-header {
-            margin-bottom: 2.5rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px dashed rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .sermon-header::after {
-            content: "✝";
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--pure-white);
-            padding: 0 15px;
-            color: var(--gold);
-            font-size: 1.2rem;
-        }
-
-        .theme {
-            font-family: 'Playfair Display', serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: var(--deep-blue);
-            margin-bottom: 1rem;
-            line-height: 1.3;
-            text-align: center;
-        }
-
-        .meta {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 25px;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            padding: 0.5rem 1rem;
-            background: rgba(0, 0, 0, 0.03);
-            border-radius: 50px;
-        }
-
-        .meta-item i {
-            color: var(--holy-gold);
-            font-size: 20px;
-        }
-
-        .main-image {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-             object-position: 50% 20%;
-            margin: 2rem 0;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            border: 5px solid var(--pure-white);
-            outline: 1px solid rgba(0, 0, 0, 0.1);
-            transform: perspective(1000px) rotateX(2deg);
-            transition: transform 0.5s, box-shadow 0.5s;
-        }
-
-        .main-image:hover {
-            transform: perspective(1000px) rotateX(0deg) scale(1.01);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-
-        .article-content {
-            font-size: 25px;
-            line-height: 1.9;
-            color: var(--text-dark);
-            position: relative;
-        }
-
-        .article-content p {
-            margin-bottom: 1.8rem;
-            text-align: justify;
-        }
-
-        .article-content h2,
-        .article-content h3 {
-            font-family: 'Playfair Display', serif;
-            margin: 3rem 0 1.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .article-content h2 {
-            font-size: 1.8rem;
-            color: var(--deep-blue);
-            border-left: 5px solid var(--holy-gold);
-        }
-
-        .article-content h3 {
-            font-size: 1.5rem;
-            color: var(--spirit-purple);
-            border-left: 5px solid var(--life-green);
-        }
-
-        .verse-decoration {
-            background: linear-gradient(135deg, var(--light-cyan), var(--pure-white));
-            padding: 2rem;
-            border-radius: 8px;
-            margin: 2.5rem 0;
-            position: relative;
-            overflow: hidden;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .verse-decoration::before,
-        .verse-decoration::after {
-            content: '"';
-            position: absolute;
-            font-size: 8rem;
-            color: rgba(37, 104, 239, 0.05);
-            font-family: serif;
-            line-height: 1;
-            z-index: 1;
-        }
-
-        .verse-decoration::before {
-            top: -20px;
-            left: 10px;
-        }
-
-        .verse-decoration::after {
-            bottom: -40px;
-            right: 10px;
-        }
-
-        .verse-text {
-            position: relative;
-            z-index: 2;
-            font-style: italic;
-            color: var(--deep-blue);
-            text-align: center;
-            font-size: 1.3rem;
-            line-height: 1.7;
-            font-weight: 500;
-        }
-
-        .verse-ref {
-            display: block;
-            text-align: right;
-            margin-top: 1rem;
-            font-style: normal;
-            font-weight: 600;
-            color: var(--spirit-purple);
-            font-size: 1rem;
-        }
-
-        /* Related Sermons - Colonne Céleste */
-        .related-sermons {
-            margin: 4rem 0;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--deep-blue);
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(to right, var(--holy-red), var(--holy-gold), var(--life-green));
-            border-radius: 2px;
-        }
-
-        .sermon-tower {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .sermon-card {
-            background: var(--pure-white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-            display: flex;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .sermon-card:hover {
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-            z-index: 2;
-        }
-
-        .sermon-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 8px;
-            height: 100%;
-        }
-
-        .sermon-card:nth-child(1)::before {
-            background: var(--holy-red);
-        }
-
-        .sermon-card:nth-child(2)::before {
-            background: var(--fire-orange);
-        }
-
-        .sermon-card:nth-child(3)::before {
-            background: var(--holy-gold);
-        }
-
-        .sermon-card:nth-child(4)::before {
-            background: var(--life-green);
-        }
-
-        .sermon-card:nth-child(5)::before {
-            background: var(--heavenly-teal);
-        }
-
-        .sermon-card:nth-child(6)::before {
-            background: var(--spirit-purple);
-        }
-
-        .sermon-card-image {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .sermon-card-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .sermon-card-theme {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--deep-blue);
-        }
-
-        .sermon-card-date {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            color: var(--spirit-purple);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .sermon-card-date::before {
-            content: "📅";
-            opacity: 0.7;
-        }
-
-        .view-more {
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        .view-more-btn {
-            background: linear-gradient(135deg, var(--primary-blue), var(--spirit-purple));
-            color: var(--pure-white);
-            border: none;
-            padding: 1rem 2.5rem;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(37, 104, 239, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .view-more-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 104, 239, 0.4);
-        }
-
         /* Animations */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes slideFromBottom {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .fade-in {
@@ -607,11 +413,13 @@
             animation: slideFromBottom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
         }
 
-        .floating {
-            animation: float 6s ease-in-out infinite;
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .sermon-card {
+                flex: 0 0 320px;
+            }
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.2rem;
@@ -621,35 +429,19 @@
                 font-size: 1.1rem;
             }
 
-            .theme {
-                font-size: 1.8rem;
-            }
-
-            .main-image {
-                height: 300px;
-            }
-
-            .article-container {
-                padding: 2rem 1.5rem;
-                margin-top: -1.5rem;
-            }
-
-            .meta {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.8rem;
+            .page-title {
+                font-size: 2.2rem;
             }
 
             .sermon-card {
-                flex-direction: column;
+                flex: 0 0 280px;
             }
 
             .sermon-card-image {
-                width: 100%;
                 height: 200px;
             }
 
-            .section-title {
+            .gallery-title {
                 font-size: 1.8rem;
             }
 
@@ -663,19 +455,23 @@
                 font-size: 1.8rem;
             }
 
-            .article-content h2 {
-                font-size: 1.5rem;
+            .page-title {
+                font-size: 1.8rem;
             }
 
-            .verse-text {
-                font-size: 1.1rem;
+            .sermon-card {
+                flex: 0 0 260px;
+            }
+
+            .sermon-card-theme {
+                font-size: 1.4rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Décors floraux flottants (header) -->
+    <!-- Décors floraux flottants -->
     <div class="floral-decoration floral-1">🌸</div>
     <div class="floral-decoration floral-2">🌼</div>
     <div class="floral-decoration floral-3">🌺</div>
@@ -685,100 +481,65 @@
 
     <header>
         <div class="container header-content">
-            <img id="church-logo" class="logo"
-                src="https://i.postimg.cc/N01Zj6VS/Whats-App-Image-2025-07-21-14-19-44-14dca66b.jpg"
-                alt="Logo Temple la Grâce">
+            <img id="church-logo" class="logo" src="https://i.postimg.cc/N01Zj6VS/Whats-App-Image-2025-07-21-14-19-44-14dca66b.jpg" alt="Logo Temple la Grâce">
             <h1>L'essentiel du Dimanche</h1>
             <p class="subtitle">Résumé des messages dominicaux – ADBiétry Temple la Grâce</p>
         </div>
     </header>
 
     <main class="container">
-        <article class="article-container fade-in">
-            <div class="sermon-header">
-                <h2 id="sermon-theme" class="theme"></h2>
-                <div class="meta">
-                    <span id="sermon-preacher" class="meta-item"><i>👤</i> <span></span></span>
-                    <span id="sermon-passage" class="meta-item"><i>📖</i> <span></span></span>
-                    <span id="sermon-date" class="meta-item"><i>📅</i> <span></span></span>
-                </div>
-                <img id="sermon-image" class="main-image" src="" alt="Illustration du message">
+        <h2 class="page-title fade-in">Tous les Enseignements</h2>
+        
+        <p class="sermons-intro fade-in">
+            Découvrez ici tous les enseignements "L'essentiel du dimanche" de notre église. 
+            Chaque semaine, nos pasteurs partagent des messages inspirés qui nourrissent notre foi 
+            et nous aident à grandir spirituellement. Parcourez cette collection pour revivre 
+            ces moments de grâce et d'enseignement.
+        </p>
+        
+        <section class="sermons-gallery">
+            <h3 class="gallery-title slide-up">Messages</h3>
+            <div id="sermons-container" class="sermons-container">
+                <!-- Sermons will be inserted here dynamically -->
             </div>
-            <div id="sermon-content" class="article-content"></div>
-        </article>
-
-        <section class="related-sermons">
-            <h3 class="section-title slide-up">Messages Récents</h3>
-            <div id="sermon-tower" class="sermon-tower"></div>
-            <div class="view-more">
-                <button id="view-more-btn" class="view-more-btn slide-up">Voir Plus de Messages</button>
+            <div class="gallery-controls">
+                <button id="prev-btn" class="control-btn slide-up">❮</button>
+                <button id="next-btn" class="control-btn slide-up">❯</button>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container footer-content">
-            <img id="footer-logo" class="footer-logo"
-                src="https://i.postimg.cc/N01Zj6VS/Whats-App-Image-2025-07-21-14-19-44-14dca66b.jpg"
-                alt="Logo Temple la Grâce">
+            <img id="footer-logo" class="footer-logo" src="https://i.postimg.cc/N01Zj6VS/Whats-App-Image-2025-07-21-14-19-44-14dca66b.jpg" alt="Logo Temple la Grâce">
             <p class="footer-text">Partageons la Parole de Dieu autour de nous</p>
-            <p class="copyright">© <span id="current-year"></span> Église des Assemblées de Dieu – Biétry Temple la
-                Grâce</p>
+            <p class="copyright">© <span id="current-year"></span> Église des Assemblées de Dieu – Biétry Temple la Grâce</p>
         </div>
     </footer>
 
     <script>
-        // Current Sermon Data - Inspiration Divine
-        const currentSermon = {
-            theme: "Le coeur derrière l'offrande.",
-            preacher: "Pasteur Kamenan",
-            passage: "Genèse 4:1-16",
-            date: "Dimanche 22 Juin 2025",
-            image: "https://i.postimg.cc/V6M7xPgB/Chat-GPT-Image-22-juil-2025-16-41-43.png",
-            content: `
-                <p> Dans ce sermon du dimanche 22 Juin 2025, le Pasteur Kamenan nous a invités à réfléchir sur le véritable sens de l’offrande : 
-                    un acte spirituel qui trouve toute sa valeur dans la disposition du cœur du donateur.</p>
-                
-                <h2>Qu’est-ce que l’offrande ?</h2>
-                <p>L’offrande est un don à Dieu, en témoignage de notre affection et de notre amour envers Lui.</p>
-
-                <h2>L’exemple de l’offrande d’Abel</h2>
-                <p>Genèse 4 :1-16 nous révèle, à travers l’histoire des offrandes d’Abel et de Caïn, 
-                    que Dieu regarde au Coeur avant l'offrande, au Donateur avant le don.</p>
-
-                     <div class="verse-decoration">
-                    <p class="verse-text">"[4] C’est par la foi qu’Abel offrit à Dieu un sacrifice plus excellent que celui de Caïn; 
-                        c’est par elle qu’il fut déclaré juste, Dieu approuvant ses offrandes; et c’est par elle qu’il parle encore, quoique mort." <br>
-                          <span class="verse-ref"> <strong><a href="https://bible.com/bible/93/heb.11.4.LSG" >Hébreux 11:4 LSG </a></strong></span></p> </a>
-                </div> 
-                <p> Ainsi, notre offrande à Dieu doit être précédée d’une disposition sincère de cœur, 
-                    d’une foi vivante et d’un désir de Lui offrir ce qui est bon et excellent. 
-                    C’est de cette manière qu’elle Lui sera agréable, et qu'il nous bénira.</p>
-                
-                <h2>L'offrande dans le contexte de la Reconstruction de l'église.</h2>
-                <p>En tant que chrétiens, l’offrande doit devenir une culture dans notre vie.
-                     Nous devons ouvrir notre cœur à faire l’œuvre de Dieu, et contribuer activement à la vision pour son église
-                      qu’Il a communiquée à son serviteur, l’Apôtre Nguessan Yédé Émile. De cette fidélité découleront des bénédictions 
-                      abondantes sur nos vies. Soyons donc des hommes et des femmes engagés, et Dieu accomplira 
-                      avec nous des choses extraordinaires, pour la seule gloire de son nom.
-                     </p>
-
-            `
-        };
-
-        // Related Sermons - Arc-en-Ciel Spirituel
-        const relatedSermons = [
+        // Données des enseignements
+        const allSermons = [
+            {
+                theme: "Le coeur derrière l'offrande.",
+                date: "22 Juin 2025",
+                thematic: "Genèse 4:1-16",
+                image: "https://i.postimg.cc/W3mr5QP4/hands-offering-heart-generosity-compassion-vector-design-generative-ai-tender-illustration-one-pair.webp",
+                url: "Dimanche22Juin2025.html"
+            },
             {
                 theme: "En ces temps de la fin, menons le bon combat car Jésus revient.",
-                date: "Dimanche 20 Juillet 2025",
-                url: "EssentielduDimanche_20Juillet2025.html",
-                image: "https://i.postimg.cc/cHGHPN4Z/Chat-GPT-Image-22-juil-2025-13-33-23.png"
+                date: "20 Juillet 2025",
+                thematic: "2 Timothée 4:6-8",
+                image: "https://i.postimg.cc/cHGHPN4Z/Chat-GPT-Image-22-juil-2025-13-33-23.png",
+                url: "Dimanche20Juillet2025.html"
             },
             {
                 theme: "Comment discerner la volonté de Dieu dans ma vie ?",
-                date: "Dimanche 29 Juin 2025",
-                 url: "EssentielduDimanche_29Juin2025.html",
-                image: "https://i.postimg.cc/W3mr5QP4/hands-offering-heart-generosity-compassion-vector-design-generative-ai-tender-illustration-one-pair.webp"
+                date: "29 Juin 2025",
+                thematic: "Jérémie 28",
+                image: "https://i.postimg.cc/QMbnvnDf/1429125165-124523-1200x667x0.jpg",
+                url: "Dimanche29Juin2025.html"
             }
             
         ];
@@ -787,14 +548,9 @@
         const elements = {
             churchLogo: document.getElementById('church-logo'),
             footerLogo: document.getElementById('footer-logo'),
-            sermonTheme: document.getElementById('sermon-theme'),
-            sermonPreacher: document.querySelector('#sermon-preacher span'),
-            sermonPassage: document.querySelector('#sermon-passage span'),
-            sermonDate: document.querySelector('#sermon-date span'),
-            sermonImage: document.getElementById('sermon-image'),
-            sermonContent: document.getElementById('sermon-content'),
-            sermonTower: document.getElementById('sermon-tower'),
-            viewMoreBtn: document.getElementById('view-more-btn'),
+            sermonsContainer: document.getElementById('sermons-container'),
+            prevBtn: document.getElementById('prev-btn'),
+            nextBtn: document.getElementById('next-btn'),
             currentYear: document.getElementById('current-year')
         };
 
@@ -803,65 +559,53 @@
             // Set current year
             elements.currentYear.textContent = new Date().getFullYear();
 
-            // Load current sermon data
-            loadCurrentSermon();
+            // Load sermons
+            loadSermons();
 
-            // Load related sermons (first 4)
-            loadRelatedSermons(4);
-
-            // Set up "View More" button
-            elements.viewMoreBtn.addEventListener('click', function () {
-                loadRelatedSermons(relatedSermons.length);
-                this.style.display = 'none';
-            });
+            // Set up navigation buttons
+            setupNavigation();
 
             // Add scroll animations
             setupScrollAnimations();
         }
 
-        // Load current sermon data
-        function loadCurrentSermon() {
-            elements.sermonTheme.textContent = currentSermon.theme;
-            elements.sermonPreacher.textContent = currentSermon.preacher;
-            elements.sermonPassage.textContent = currentSermon.passage;
-            elements.sermonDate.textContent = currentSermon.date;
-            elements.sermonImage.src = currentSermon.image;
-            elements.sermonImage.alt = `Illustration: ${currentSermon.theme}`;
-            elements.sermonContent.innerHTML = currentSermon.content;
-        }
+        // Load sermons
+        function loadSermons() {
+            elements.sermonsContainer.innerHTML = '';
 
-        // Load related sermons
-        function loadRelatedSermons(count) {
-            elements.sermonTower.innerHTML = '';
-
-            const sermonsToShow = Math.min(count, relatedSermons.length);
-
-            for (let i = 0; i < sermonsToShow; i++) {
-                const sermon = relatedSermons[i];
-
-                const link = document.createElement('a');
-                link.href = sermon.url || "#";
-                link.target = "_blank"; // ouvre dans un nouvel onglet (optionnel)
-                link.className = 'sermon-card-link';
-                link.style.textDecoration = 'none'; // pour enlever soulignement
-
-                const sermonCard = document.createElement('div');
+            allSermons.forEach((sermon, index) => {
+                const sermonCard = document.createElement('a');
+                sermonCard.href = sermon.url || "#";
                 sermonCard.className = 'sermon-card slide-up';
-                sermonCard.style.animationDelay = `${i * 0.1}s`;
-
+                sermonCard.style.animationDelay = `${index * 0.1}s`;
                 sermonCard.innerHTML = `
-      <img src="${sermon.image}" alt="${sermon.theme}" class="sermon-card-image">
-      <div class="sermon-card-content">
-        <h4 class="sermon-card-theme">${sermon.theme}</h4>
-        <p class="sermon-card-date">${sermon.date}</p>
-      </div>
-    `;
-
-                link.appendChild(sermonCard);
-                elements.sermonTower.appendChild(link);
-            }
+                    <img src="${sermon.image}" alt="${sermon.theme}" class="sermon-card-image">
+                    <div class="sermon-card-content">
+                        <h4 class="sermon-card-theme">${sermon.theme}</h4>
+                        <p class="sermon-card-date">${sermon.date}</p>
+                        <span class="sermon-card-thematic">${sermon.thematic}</span>
+                    </div>
+                `;
+                elements.sermonsContainer.appendChild(sermonCard);
+            });
         }
 
+        // Setup navigation controls
+        function setupNavigation() {
+            elements.prevBtn.addEventListener('click', () => {
+                elements.sermonsContainer.scrollBy({
+                    left: -400,
+                    behavior: 'smooth'
+                });
+            });
+
+            elements.nextBtn.addEventListener('click', () => {
+                elements.sermonsContainer.scrollBy({
+                    left: 400,
+                    behavior: 'smooth'
+                });
+            });
+        }
 
         // Setup scroll animations
         function setupScrollAnimations() {
@@ -883,5 +627,4 @@
         document.addEventListener('DOMContentLoaded', initPage);
     </script>
 </body>
-
 </html>
